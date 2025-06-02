@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>360° Product Viewer</title>
+  <style>
+    body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.viewer-container {
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  border: 2px solid #ccc;
+  background: #fff;
+  cursor: grab;
+}
+
+.viewer-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+}
+
+  </style>
+</head>
+<body>
+  <div class="viewer-container">
+    <img id="product-image" src="images/img1.jpg" alt="360 View">
+  </div>
+
+  <script>
+    const image = document.getElementById("product-image");
+let isDragging = false;
+let startX = 0;
+let currentFrame = 1;
+const totalFrames = 36;
+
+function updateImage(frame) {
+  image.src = `images/img${frame}.jpg`;
+}
+
+document.querySelector(".viewer-container").addEventListener("mousedown", (e) => {
+  isDragging = true;
+  startX = e.pageX;
+});
+
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+
+  const dx = e.pageX - startX;
+
+  if (Math.abs(dx) > 5) {
+    if (dx > 0) {
+      currentFrame = (currentFrame - 1 + totalFrames - 1) % totalFrames + 1;
+    } else {
+      currentFrame = (currentFrame % totalFrames) + 1;
+    }
+    updateImage(currentFrame);
+    startX = e.pageX;
+  }
+});
+
+  </script>
+  
+</body>
+</html>
