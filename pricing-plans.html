@@ -18,6 +18,12 @@
 		<link rel="icon" href="gallery/logo-icon.png" sizes="32x32" />
 		<link rel="icon" href="gallery/logo-icon.png" sizes="192x192" />
 		<link rel="apple-touch-icon-precomposed" href="gallery/logo-icon.png" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			a{
+				text-decoration: none;
+			}
+		</style>
 	</head>
 	<body class="home">
 		<div class="menu-mask">
@@ -358,7 +364,7 @@
 						<!-- /col-lg-12 -->
 					</div>
 					<!-- /row -->
-					<div class="row margin-t50">
+					<div class="row margin-t50 margin-b50">
 
 						
 						<!-- ELITE ₹3,50,000 -->
@@ -387,9 +393,10 @@
 									<li>Pendrive - 2</li>
 									<li>Pendrive Box - 2</li>
 								</ul>
-								<a class="read-more btn100" href="#" data-plan="ELITE 1" data-amount="1" onclick="payNow(this)">Choose</a>
+								<a class="read-more btn100" style="text-decoration: none;" href="#" data-plan="ELITE 1" data-amount="1" onclick="payNow(this)">Choose</a>
+
 							</div>
-						</div>
+						</div>          
 
 						<!-- ELITE ₹2,20,000 -->
 						<div class="col-md-3 mobile-margin-b30">
@@ -624,6 +631,8 @@
 		<!-- /SECTION 3 -->	
 		</div>
 		<!-- /WRAP CONTENT -->
+
+
 		<!-- FOOTER -->
 		<div id="footer-instagram">
 			<ul class="instagram-pics instagram-size-small">
@@ -708,6 +717,32 @@
 
 			</div>
 		</footer>
+
+
+		<!-- USER DETAILS MODAL -->
+		<div class="modal fade" id="userDetailsModal" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Enter Your Details</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="customer-name" class="form-control mb-2" placeholder="Your Name">
+				<input type="email" id="customer-email" class="form-control mb-2" placeholder="Your Email">
+				<input type="tel" id="customer-contact" class="form-control mb-2" placeholder="Your Phone">
+				<input type="hidden" id="selected-plan">
+				<input type="hidden" id="selected-amount">
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" onclick="payWithRazorpay()">Proceed to Pay</button>
+			</div>
+			</div>
+		</div>
+		</div>
+
+
+
 		<!-- /FOOTER -->
 		<div class="scrollup">
 			<a class="scrolltop" href="#">
@@ -717,46 +752,64 @@
 
 
 
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
 		<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 		<script>
 			function payNow(button) {
-				const planName = button.getAttribute("data-plan");
-				const amountInRupees = parseInt(button.getAttribute("data-amount"));
+				const plan = button.getAttribute("data-plan");
+				const amount = button.getAttribute("data-amount");
+
+				document.getElementById("selected-plan").value = plan;
+				document.getElementById("selected-amount").value = amount;
+
+				const modal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
+				modal.show();
+			}
+
+			function payWithRazorpay() {
+				const customerName = document.getElementById("customer-name").value;
+				const customerEmail = document.getElementById("customer-email").value;
+				const customerContact = document.getElementById("customer-contact").value;
+				const planName = document.getElementById("selected-plan").value;
+				const amountInRupees = parseInt(document.getElementById("selected-amount").value);
 				const amountInPaise = amountInRupees * 100;
 
+				if (!customerName || !customerEmail || !customerContact) {
+					alert("Please fill in all details.");
+					return;
+				}
+
 				const options = {
-					"key": "rzp_test_ybrbVyZWTB9tpV", 
-					"amount": amountInPaise, 
+					"key": "rzp_live_0daYIeErvRCG92",
+					"amount": amountInPaise,
 					"currency": "INR",
-					"name": "Your Company Name",
+					"name": "N Creation Photography",
 					"description": planName,
 					"handler": function (response) {
-						
 						alert("Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
-						console.log("Success:", response);
 					},
-					// "prefill": {
-					// "name": "NcreationPhotography",
-					// 	"email": "ncreationcumbum@gmail.com",
-					// 	"contact": "7810905549"
-					// },
+					"prefill": {
+						"name": customerName,
+						"email": customerEmail,
+						"contact": customerContact
+					},
 					"theme": {
 						"color": "#3399cc"
 					}
 				};
 
 				const rzp = new Razorpay(options);
-
-				
 				rzp.on('payment.failed', function (response) {
 					alert("Payment Failed!\nReason: " + response.error.description);
-					console.log("Failure:", response.error);
 				});
-
 				rzp.open();
 			}
 		</script>
+
+
 
 
 
