@@ -21,8 +21,8 @@ app.use(express.static(path.join(__dirname)));
 
 
 const razorpay = new Razorpay({
-    key_id: 
-    key_secret:
+    key_id: "rzp_test_ybrbVyZWTB9tpV" ,
+    key_secret: "2ged3mFib0MCWKWq3FxgCicE"
 });
 
 
