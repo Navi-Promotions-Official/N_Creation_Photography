@@ -5527,3 +5527,91 @@ body.hidden-scroll {
         grid-template-columns: repeat(3, 1fr);
       }
     }
+
+	.textwidget p{
+		text-align: justify;
+	}
+
+
+.terms-section {
+  background-color: #f8f8f8;
+}
+
+.terms-main-title {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  color: #222;
+}
+
+.terms-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+.terms-box h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #002da5;
+}
+
+.terms-box p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.terms-box a {
+  color: #002da5;
+  text-decoration: underline;
+}
+
+/* Razorpay Modal Styling */
+.modal-content {
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+
+.modal-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #002da5;
+  text-align: center !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-close {
+  background-color: #ddd;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
+.modal-body input.form-control {
+  font-size: 0.95rem;
+}
+
+.modal-footer {
+  justify-content: center;
+}
+
+.modal-footer .btn-primary {
+  padding: 10px 25px;
+  border-radius: 10px;
+  font-weight: 500;
+  background-color: #002da5;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #0056b3;
+}
