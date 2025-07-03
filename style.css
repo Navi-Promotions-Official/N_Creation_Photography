@@ -1628,11 +1628,11 @@ color: #ffffff; }
 .home-section-5-2 .icon-box-icon svg path,
 .home-section-6-4 .icon-box svg path,
 .home-section-1-2 .icon-svg svg path{
-	fill: #002da5;
+	fill: #ffffff;
 }
 
 .home-section-1-2 .icon-svg-border{
-	border-color: #002da5;
+	border-color: #ffffff;
 }
 
 .home-section-7-1,
@@ -5627,7 +5627,24 @@ body.hidden-scroll {
 	.logo img{
 		width: 160px;
 	}
+
+	.journey-card{
+		margin-bottom: 10px;
+	}
 }
+
+
+@media screen and (width:768px){
+	.slider-img{
+		width: 100% !important;
+		height: 100% !important;
+		object-fit: cover !important;
+	}
+}
+
+
+
+
 
 #home-section-1-2 .overlay {
   position: absolute;
@@ -5644,3 +5661,5 @@ body.hidden-scroll {
   z-index: 2; 
   color: white; 
 }
+
+
