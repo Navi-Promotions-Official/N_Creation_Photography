@@ -5623,6 +5623,10 @@ body.hidden-scroll {
   text-decoration: none;
 }
 
+.btn-pricing{
+	background-color: #002da5 !important;
+	color: #ffffff !important;
+}
 
 
 @media screen and (max-width:767px){
@@ -5633,6 +5637,16 @@ body.hidden-scroll {
 	.journey-card{
 		margin-bottom: 10px;
 	}
+}
+
+@media screen and (width:344px){
+
+  ul.social-media {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    list-style-position: inside; /* Optional: keeps bullets/text aligned */
+  }
+
 }
 
 
