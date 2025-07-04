@@ -5779,3 +5779,33 @@ body.hidden-scroll {
   }
   
 }
+
+.bg-brand-light {
+  background-color: #f0f4ff; /* Soft Lavender Blue */
+  color: #002da5;
+}
+
+.bg-brand-dark {
+  background-color: #fff3e0; /* Warm Gold */
+  color: #002da5;
+}
+
+.price-box h2.price-title,
+.price-box h3,
+.price-box ul li,
+.price-box .btn {
+  color: inherit;
+}
+
+/* Optional: Button styling */
+.btn-pricing {
+  background-color: #002da5;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.btn-pricing:hover {
+  background-color: #001d73;
+}
