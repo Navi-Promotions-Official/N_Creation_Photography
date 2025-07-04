@@ -5730,3 +5730,38 @@ body.hidden-scroll {
 	margin-top: 15px !important;
   }
 }
+
+@media screen and (width: 540px) {
+  .price-box {
+    margin: 50px;
+  }
+  
+}
+
+@media screen and (width: 412px) {
+  .price-box {
+    margin: 20px;
+  }
+  
+}
+
+@media screen and (width: 344px) {
+  .price-box {
+    margin: 10px;
+  }
+  
+}
+
+@media screen and (width: 360px) {
+  .price-box {
+    margin: 30px;
+  }
+  
+}
+
+@media screen and (width: 430px){
+  .price-box {
+    margin: 30px;
+  }
+  
+}
